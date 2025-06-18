@@ -21,7 +21,7 @@ import { SidebarDrawerWidth } from "@/utils/Constants";
 import HomeIcon from "@mui/icons-material/Home";
 import { useRouter, usePathname } from "next/navigation"; // or next/router for older Next.js versions
 import AppleIcon from "../assets/Images/apple.png";
-import LogoIcon from "../assets/Images/logo.png";
+import LogoIcon from "../assets/Images/apple.png";
 import PersonIcon from "@mui/icons-material/Person";
 
 const menuItems = [
@@ -32,16 +32,28 @@ const menuItems = [
     exact: true, // Only match exactly this path
   },
   {
+    label: "Dashboard2",
+    icon: <HomeIcon />,
+    path: "/dashboard2",
+    exact: true, // Only match exactly this path
+  },
+  {
     label: "Users List",
     icon: <PersonIcon />,
-    path: "/clients",
-    subPaths: ["/clients", "/client/view", "/client/edit"], // Will match any of these
+    path: "/userslist",
+    subPaths: ["/userslist", "/userslist/view", "/userslist/edit"], // Will match any of these
   },
   {
     label: "Client List",
     icon: <PeopleIcon />,
     path: "/clients",
     subPaths: ["/clients", "/client/view", "/client/edit"], // Will match any of these
+  },
+  {
+    label: "Study",
+    icon: <PeopleIcon />,
+    path: "/study",
+    subPaths: ["/study", "/study/view", "/study/edit"], // Will match any of these
   },
 
   // {
@@ -119,7 +131,7 @@ export default function Sidebar() {
           fontSize={17}
           fontWeight={600}
           color="text.primary"
-          // mt={1}
+          mt={1}
           ml={1}
         >
           Siyad's App

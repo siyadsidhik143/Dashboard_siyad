@@ -15,6 +15,7 @@ import { SidebarDrawerWidth } from "../utils/Constants";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useState } from "react";
 import ProfileOptions from "@/utils/ProfileOptions";
+import { Search as SearchIcon } from "@mui/icons-material";
 
 export default function Header() {
   const theme = useTheme();
@@ -39,13 +40,37 @@ export default function Header() {
         backgroundColor: "#ffffff",
         boxShadow: "none",
         borderBottom: "1px solid #e3e3e3",
+        minHeight: "10vh",
       }}
     >
       <Toolbar>
         {/* Left Side: Title */}
-        <Typography variant="h6" noWrap component="div" color="black">
+        {/* <Typography variant="h6" noWrap component="div" color="black">
           Dashboard
-        </Typography>
+        </Typography> */}
+        <Box sx={{ position: "relative" }}>
+          <SearchIcon
+            sx={{
+              position: "absolute",
+              left: 12,
+              top: "50%",
+              transform: "translateY(-50%)",
+              color: "text.secondary",
+            }}
+          />
+          <input
+            type="text"
+            placeholder="Search project, folder or file"
+            style={{
+              width: "100%",
+              padding: "12px 16px 12px 40px",
+              borderRadius: "8px",
+              border: "1px solid #e0e0e0",
+              fontSize: "14px",
+              outline: "none",
+            }}
+          />
+        </Box>
 
         {/* Spacer to push icons to the right */}
         <Box sx={{ flexGrow: 1 }} />
