@@ -1,7 +1,20 @@
 import React from "react";
+import ChatBox from "./ChatBoxComponent";
+import { Box } from "@mui/material";
 
-const Study = () => {
-  return <div>Study</div>;
+const index = () => {
+  return (
+    <Box
+      sx={{
+        p: 5,
+        display: "flex",
+        justifyContent: "flex-end",
+        alignItems: "flex-end",
+      }}
+    >
+      <ChatBox />
+    </Box>
+  );
 };
 
-export default Study;
+export default index;

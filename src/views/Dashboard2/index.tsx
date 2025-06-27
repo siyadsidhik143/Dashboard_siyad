@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import { useTheme } from "@mui/material/styles";
 import {
@@ -27,6 +26,7 @@ import {
   Star as BonusIcon,
 } from "@mui/icons-material";
 import DashboardPieChart from "../Dashboard/Charts/DashboardPieChart";
+import { IndiaMap } from "./components/IndiaMap2";
 
 const COLORS = [
   "#0088FE", // blue
@@ -497,6 +497,9 @@ const ClientDashboard = () => {
           Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec Jan
         </Typography>
       </Box>
+
+      <h1 className="text-xl font-bold mb-4">India Map – Highlights</h1>
+      <IndiaMap highlightedStates={["IN-KA", "IN-MH", "IN-TN"]} />
     </Box>
   );
 };
