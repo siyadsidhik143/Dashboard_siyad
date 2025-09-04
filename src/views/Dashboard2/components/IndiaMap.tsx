@@ -7,14 +7,14 @@ interface HoverInfo {
   title: string;
 }
 
-export const IndiaMap: any = ({
+export const IndiaMap = ({
   mapStyle = {
-    hoverColor: "#e0e0e0",
-    backgroundColor: "#ffffff",
-    stroke: "#000000",
+    hoverColor: "#ff0000",
+    backgroundColor: "#0007d7",
+    stroke: "#004cff",
     strokeWidth: 1,
     tooltipConfig: {
-      backgroundColor: "rgba(0, 0, 0, 0.8)",
+      backgroundColor: "rgba(255, 0, 0, 0.8)",
       textColor: "#ffffff",
     },
   },
@@ -115,7 +115,7 @@ export const IndiaMap: any = ({
   };
 
   const currentStateData: any = hoverInfo
-    ? stateData.find((state) => state.id === hoverInfo.id)
+    ? stateData.find((state: any) => state.id === hoverInfo.id)
     : undefined;
 
   // Function to determine tooltip display
@@ -208,7 +208,6 @@ export const IndiaMap: any = ({
         onMouseOver={(e) => {
           const path = e.target as SVGPathElement;
           if (path.tagName === "path") {
-            // Apply hover color
             path.setAttribute("fill", mapStyle.hoverColor || "#e0e0e0");
             handleMouseEnter(e, path);
           }

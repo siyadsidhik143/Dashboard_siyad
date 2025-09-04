@@ -23,6 +23,7 @@ import { useRouter, usePathname } from "next/navigation"; // or next/router for 
 import AppleIcon from "../assets/Images/apple.png";
 import LogoIcon from "../assets/Images/apple.png";
 import PersonIcon from "@mui/icons-material/Person";
+import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 
 const menuItems = [
   {
@@ -85,6 +86,13 @@ const menuItems = [
     icon: <FolderIcon />,
     path: "/projects",
     subPaths: ["/projects", "/project/view", "/project/edit"],
+  },
+
+  {
+    label: "E-Commerce",
+    icon: <ShoppingCartCheckoutIcon />,
+    path: "/ecommerce",
+    subPaths: ["/ecommerce", "/project/view", "/project/edit"],
   },
   // {
   //   label: "Meeting List",

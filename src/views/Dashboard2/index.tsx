@@ -26,7 +26,7 @@ import {
   Star as BonusIcon,
 } from "@mui/icons-material";
 import DashboardPieChart from "../Dashboard/Charts/DashboardPieChart";
-import { IndiaMap } from "./components/IndiaMap2";
+import { IndiaMap } from "./components/IndiaMap";
 
 const COLORS = [
   "#0088FE", // blue

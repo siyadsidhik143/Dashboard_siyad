@@ -12,6 +12,9 @@ import { makeStore, AppStore } from "../app/library/ReduxStore";
 export default function App({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isLoginPage = pathname === "/login";
+  const isEcommerce =
+    pathname.startsWith("/ecommerce") || pathname.startsWith("/product");
+  const isEcommerceSeller = pathname.startsWith("/seller");
   const storeRef = useRef<AppStore | null>(null);
   if (!storeRef.current) {
     storeRef.current = makeStore();
@@ -23,22 +26,25 @@ export default function App({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Provider store={storeRef.current}>
-        <Box sx={{ display: "flex" }}>
-          <Sidebar />
-          <Box
-            component="main"
-            sx={{
-              flexGrow: 1,
-              p: 3,
-              backgroundColor: "#f4f5fa",
-              minHeight: "100vh",
-            }}
-          >
-            <Header />
-            <Toolbar />
-            {children}
+        {isEcommerce || isEcommerceSeller ? (
+          children
+        ) : (
+          <Box sx={{ display: "flex" }}>
+            <Sidebar />
+            <Box
+              component="main"
+              sx={{
+                flexGrow: 1,
+                p: 3,
+                backgroundColor: "#f4f5fa",
+              }}
+            >
+              <Header />
+              <Toolbar />
+              {children}
+            </Box>
           </Box>
-        </Box>
+        )}
       </Provider>
     </>
   );

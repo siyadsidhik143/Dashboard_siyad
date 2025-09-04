@@ -1,9 +1,7 @@
 // app/layout.tsx
 import "./globals.css";
-import { CssBaseline } from "@mui/material";
-import ThemeProvider from "@/assets/styles/ThemeProvider";
 import "../assets/styles/custom_styles.css";
-import App from "./App";
+import ClientLayoutWrapper from "./ClientLayoutWrapper";
 
 export const metadata = {
   title: "CRM Dashboard",
@@ -17,11 +15,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <ThemeProvider>
-          <CssBaseline />
-          <App>{children}</App>
-        </ThemeProvider>
+      <body suppressHydrationWarning={true}>
+        <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
       </body>
     </html>
   );
