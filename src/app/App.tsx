@@ -8,6 +8,7 @@ import { Box, Toolbar } from "@mui/material";
 import { useRef } from "react";
 import { Provider } from "react-redux";
 import { makeStore, AppStore } from "../app/library/ReduxStore";
+import EcommerceHeader from "@/views/EcommerceSeller/EcommerceHeader";
 
 export default function App({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -27,7 +28,10 @@ export default function App({ children }: { children: React.ReactNode }) {
     <>
       <Provider store={storeRef.current}>
         {isEcommerce || isEcommerceSeller ? (
-          children
+          <>
+            <EcommerceHeader />
+            {children}
+          </>
         ) : (
           <Box sx={{ display: "flex" }}>
             <Sidebar />

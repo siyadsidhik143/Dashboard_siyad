@@ -8,9 +8,11 @@ import {
   Button,
   CircularProgress,
   Card,
+  IconButton,
+  Tooltip,
 } from "@mui/material";
-import EcommerceHeader from "./EcommerceHeader";
 import ProductImages from "./ProductImages";
+import { IconEdit } from "@tabler/icons-react";
 
 interface Product {
   id: number;
@@ -58,7 +60,14 @@ const ProductDetailsPage = () => {
 
   if (loading) {
     return (
-      <Box display="flex" justifyContent="center" mt={10}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "70vh",
+        }}
+      >
         <CircularProgress />
       </Box>
     );
@@ -67,177 +76,151 @@ const ProductDetailsPage = () => {
   if (!product) {
     return (
       <Typography variant="h6" align="center" mt={10}>
-        Product not found
+        Product not found!
       </Typography>
     );
   }
 
   return (
-    <>
-      <EcommerceHeader />
-      <Container sx={{ mt: 6, mb: 6 }}>
-        <Card
+    <Card
+      sx={{
+        display: "flex",
+        flexDirection: { xs: "column", md: "row" }, // ✅ stack on mobile
+        p: { xs: 2, md: 3 },
+        mt: 2,
+      }}
+    >
+      {/* Left: Image + Buttons */}
+      <Box
+        sx={{
+          width: { xs: "100%", md: "50%" },
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center", // ✅ center everything
+        }}
+      >
+        {/* Product Images */}
+        <ProductImages
+          images={product?.images ?? []}
+          selectedImage={selectedImage}
+          setSelectedImage={setselectedImage}
+        />
+      </Box>
+
+      {/* Right: Details */}
+      <Box sx={{ flex: 1, pl: { md: 4 }, mt: { xs: 3, md: 0 } }}>
+        <Box
           sx={{
             display: "flex",
-            flexDirection: { xs: "column", md: "row" },
-            p: 3,
-            borderRadius: "16px",
-            boxShadow: "0 6px 20px rgba(0,0,0,0.1)",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: 1,
           }}
         >
-          {/* Left: Image + Buttons */}
-          <Box
-            sx={{
-              width: { xs: "100%", md: "50%" },
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-            }}
-          >
-            <Box sx={{ display: "flex", gap: 4 }}>
-              <ProductImages
-                images={product?.images ?? []}
-                selectedImage={selectedImage}
-                setselectedImage={setselectedImage}
-              />
-              {/* <Box
-                component="img"
-                src={selectedImage || product?.images?.[0] || product.image}
-                alt={product.name}
-                sx={{
-                  width: "100%",
-                  height: 400,
-                  objectFit: "cover",
-                  borderRadius: "12px",
-                }}
-              /> */}
-            </Box>
+          <Typography variant="h5" fontWeight={700}>
+            {product?.name}
+          </Typography>
+          <Tooltip title="Edit" placement="top">
+            <IconButton>
+              <IconEdit size={22} stroke={1.5} color="#666" />
+            </IconButton>
+          </Tooltip>
+        </Box>
 
-            {/* Buttons under image */}
+        <Typography
+          variant="subtitle1"
+          color="text.secondary"
+          gutterBottom
+          sx={{ mt: 0.5 }}
+        >
+          {product?.category}
+        </Typography>
+
+        {product?.price !== undefined && (
+          <Typography
+            variant="h6"
+            fontWeight="bold"
+            color="error"
+            sx={{ mb: 1 }}
+          >
+            ₹{product.price.toLocaleString()}
+          </Typography>
+        )}
+
+        <Typography
+          variant="body2"
+          sx={{ mb: 2, lineHeight: 1.6, color: "text.secondary" }}
+        >
+          {product?.description}
+        </Typography>
+
+        {product?.stock !== undefined && (
+          <Typography
+            variant="body2"
+            sx={{ mb: 2, color: product.stock > 0 ? "green" : "red" }}
+          >
+            {product.stock > 0 ? `In Stock: ${product.stock}` : "Out of Stock"}
+          </Typography>
+        )}
+
+        {/* Product Information */}
+        <Card
+          variant="outlined"
+          sx={{
+            mt: 3,
+            p: 2,
+            borderRadius: "12px",
+            backgroundColor: "#fafafa",
+          }}
+        >
+          <Typography
+            variant="subtitle1"
+            fontWeight={600}
+            gutterBottom
+            sx={{ mb: 1 }}
+          >
+            Product Information
+          </Typography>
+
+          {[
+            { label: "Brand", value: product?.brand },
+            { label: "SKU", value: product?.sku },
+            { label: "Material", value: product?.material },
+            { label: "Weight", value: product?.weight },
+            { label: "Dimensions", value: product?.dimensions },
+            { label: "Warranty", value: product?.warranty },
+          ].map((item, idx, arr) => (
             <Box
+              key={idx}
               sx={{
-                mt: 2,
                 display: "flex",
-                gap: 1,
-                justifyContent: "center",
+                justifyContent: "space-between",
+                flexDirection: { xs: "column", sm: "row" }, // ✅ stack on mobile
+                py: 1,
+                borderBottom:
+                  idx !== arr.length - 1
+                    ? "1px solid rgba(0,0,0,0.05)"
+                    : "none",
               }}
             >
-              <Button
-                variant="outlined"
-                sx={{
-                  flex: 1,
-                  borderRadius: "8px",
-                  textTransform: "none",
-                  fontWeight: 600,
-                }}
-              >
-                🛒 Add to Cart
-              </Button>
-              <Button
-                variant="contained"
-                sx={{
-                  flex: 1,
-                  borderRadius: "8px",
-                  textTransform: "none",
-                  fontWeight: 600,
-                  background: "linear-gradient(135deg, #ff5722, #ff9800)",
-                }}
-              >
-                ⚡ Buy Now
-              </Button>
-            </Box>
-          </Box>
-
-          {/* Right: Details */}
-          <Box sx={{ flex: 1, pl: { md: 4 }, mt: { xs: 3, md: 0 } }}>
-            <Typography variant="h4" fontWeight={700} gutterBottom>
-              {product.name}
-            </Typography>
-
-            <Typography variant="h6" color="text.secondary" gutterBottom>
-              {product.category}
-            </Typography>
-
-            <Typography
-              variant="h5"
-              fontWeight="bold"
-              color="error"
-              sx={{ mb: 2 }}
-            >
-              ₹{product.price.toLocaleString()}
-            </Typography>
-
-            <Typography
-              variant="body1"
-              sx={{ mb: 3, lineHeight: 1.6, color: "text.secondary" }}
-            >
-              {product.description}
-            </Typography>
-
-            {product.stock !== undefined && (
               <Typography
                 variant="body2"
-                sx={{ mb: 3, color: product.stock > 0 ? "green" : "red" }}
+                sx={{ fontWeight: 600, color: "text.secondary" }}
               >
-                {product.stock > 0
-                  ? `In Stock: ${product.stock}`
-                  : "Out of Stock"}
+                {item.label}
               </Typography>
-            )}
-
-            {/* Product Information */}
-            <Card
-              variant="outlined"
-              sx={{
-                mt: 4,
-                p: 2,
-                borderRadius: "12px",
-                backgroundColor: "#fafafa",
-              }}
-            >
               <Typography
-                variant="h6"
-                fontWeight={600}
-                gutterBottom
-                sx={{ mb: 2 }}
+                variant="body2"
+                sx={{ color: "text.primary", mt: { xs: 0.5, sm: 0 } }}
               >
-                Product Information
+                {item.value || "—"}
               </Typography>
-
-              {[
-                { label: "Brand", value: product?.brand },
-                { label: "SKU", value: product?.sku },
-                { label: "Material", value: product?.material },
-                { label: "Weight", value: product?.weight },
-                { label: "Dimensions", value: product?.dimensions },
-                { label: "Warranty", value: product?.warranty },
-              ].map((item, idx) => (
-                <Box
-                  key={idx}
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    py: 1,
-                    borderBottom:
-                      idx !== 5 ? "1px solid rgba(0,0,0,0.05)" : "none",
-                  }}
-                >
-                  <Typography
-                    variant="body2"
-                    sx={{ fontWeight: 600, color: "text.secondary" }}
-                  >
-                    {item.label}
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "text.primary" }}>
-                    {item.value || "—"}
-                  </Typography>
-                </Box>
-              ))}
-            </Card>
-          </Box>
+            </Box>
+          ))}
         </Card>
-      </Container>
-    </>
+      </Box>
+    </Card>
   );
 };
 

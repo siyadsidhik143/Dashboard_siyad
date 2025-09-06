@@ -6,8 +6,9 @@
     "description": "sample",
     "category": "Ornaments",
     "stock": 12,
-    "image": "https://media.istockphoto.com/id/1277517088/photo/fancy-designer-antique-golden-bracelets-for-woman-fashion.jpg?s=612x612&w=0&k=20&c=n49O0S5rIgzxJX5bU1YjwRHfou0DYPcmsv-N5JAAM14=",
-    "images":[],
+    "images": [
+      "https://media.istockphoto.com/id/1277517088/photo/fancy-designer-antique-golden-bracelets-for-woman-fashion.jpg?s=612x612&w=0&k=20&c=n49O0S5rIgzxJX5bU1YjwRHfou0DYPcmsv-N5JAAM14="
+    ],
     "brand": "Generic",
     "sku": "ORN-001",
     "material": "Gold Plated",
@@ -22,8 +23,9 @@
     "description": "1111",
     "category": "Ornaments",
     "stock": 12,
-    "image": "https://media.istockphoto.com/id/1277517088/photo/fancy-designer-antique-golden-bracelets-for-woman-fashion.jpg?s=612x612&w=0&k=20&c=n49O0S5rIgzxJX5bU1YjwRHfou0DYPcmsv-N5JAAM14=",
-     "images":[],
+    "images": [
+      "https://media.istockphoto.com/id/1277517088/photo/fancy-designer-antique-golden-bracelets-for-woman-fashion.jpg?s=612x612&w=0&k=20&c=n49O0S5rIgzxJX5bU1YjwRHfou0DYPcmsv-N5JAAM14="
+    ],
     "brand": "Generic",
     "sku": "ORN-002",
     "material": "Silver Plated",
@@ -36,8 +38,10 @@
     "name": "Gold Necklace",
     "price": 1999,
     "description": "24K gold-plated necklace with elegant design.",
-    "image": "https://i.pinimg.com/736x/66/a4/84/66a48419d2ef81cee895e307a37cb9cd.jpg",
-     "images":["https://i.pinimg.com/736x/66/a4/84/66a48419d2ef81cee895e307a37cb9cd.jpg","https://manubhai.in/SocialMedia/post_artworks/DABE01370.jpg"],
+    "images": [
+      "https://i.pinimg.com/736x/66/a4/84/66a48419d2ef81cee895e307a37cb9cd.jpg",
+      "https://manubhai.in/SocialMedia/post_artworks/DABE01370.jpg"
+    ],
     "brand": "Royal Jewels",
     "sku": "GN-1001",
     "material": "24K Gold Plated",
@@ -50,8 +54,9 @@
     "name": "Silver Earrings",
     "price": 499,
     "description": "Stylish silver earrings for daily wear.",
-    "image": "https://cdn01.pinkoi.com/product/DfKFYLpv/0/1/640x530.jpg",
-     "images":[],
+    "images": [
+      "https://cdn01.pinkoi.com/product/DfKFYLpv/0/1/640x530.jpg"
+    ],
     "brand": "Silver Shine",
     "sku": "SE-2001",
     "material": "Sterling Silver",
@@ -64,8 +69,9 @@
     "name": "Lipstick Kit",
     "price": 899,
     "description": "Set of 5 long-lasting matte lipsticks.",
-    "image": "https://welpix.com/wp-content/uploads/2024/02/Top-10-Lipstick-Product-Photography-Ideas.webp",
-     "images":[],
+    "images": [
+      "https://welpix.com/wp-content/uploads/2024/02/Top-10-Lipstick-Product-Photography-Ideas.webp"
+    ],
     "brand": "Glam Beauty",
     "sku": "LK-3001",
     "material": "Matte Formula",
@@ -78,8 +84,9 @@
     "name": "Cosmetic Combo",
     "price": 1299,
     "description": "Complete combo pack with foundation, kajal & more.",
-    "image": "https://m.media-amazon.com/images/I/61HUJTcH6dL.jpg_BO30,255,255,255_UF900,850_SR1910,1000,0,C_QL100_.jpg",
-     "images":[],
+    "images": [
+      "https://m.media-amazon.com/images/I/61HUJTcH6dL.jpg_BO30,255,255,255_UF900,850_SR1910,1000,0,C_QL100_.jpg"
+    ],
     "brand": "Beauty Pro",
     "sku": "CC-4001",
     "material": "Mixed Cosmetic Products",
@@ -94,13 +101,32 @@
     "description": "Christmas Ornaments ~ All things sweet~ set of 3",
     "category": "Ornaments",
     "stock": 9,
-    "image": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTauruKOEFg6Z2KsFg5dC202BNXvAwx8KQvG5yiknlv3egs25btWRigglEswwqxBKT7R-fVIJptFhmmuq9xSHhRt-0_ICy7Wh71Lf4zsIh4",
-    "images":[],
+    "images": [
+      "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTauruKOEFg6Z2KsFg5dC202BNXvAwx8KQvG5yiknlv3egs25btWRigglEswwqxBKT7R-fVIJptFhmmuq9xSHhRt-0_ICy7Wh71Lf4zsIh4"
+    ],
     "brand": "Festive Decor",
     "sku": "ORN-003",
     "material": "Glass & Plastic",
     "weight": "300g",
     "dimensions": "8 x 8 x 8 cm",
     "warranty": "No warranty"
+  },
+  {
+    "id": 1757149829764,
+    "name": "For the Face",
+    "price": 1222,
+    "description": "MAKEUP ESSENTIALS EVERY BEGINNER SHOULD HAVE ",
+    "category": "Cosmetics",
+    "stock": 23,
+    "images": [
+      "https://n.nordstrommedia.com/it/e306f781-f44e-4c3f-9b76-29456ea4715d.jpeg?h=509&w=750",
+      "https://www.revolutionbeauty.com/on/demandware.static/-/Library-Sites-revbe-content-global/default/dw90fe7fdb/images/blog/2024/wk13/wk13_makeup%20for%20beginners_01.jpg"
+    ],
+    "brand": "Siyad's Company",
+    "sku": "123",
+    "material": "Aluminium",
+    "weight": "125kg",
+    "dimensions": "12 x 22",
+    "warranty": "Not applicable"
   }
 ]

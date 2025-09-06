@@ -17,7 +17,7 @@ interface Product {
   name: string;
   price: number;
   description: string;
-  image: string;
+  images: string;
 }
 
 const EcommerceIndex = () => {
@@ -47,7 +47,6 @@ const EcommerceIndex = () => {
 
   return (
     <>
-      <EcommerceHeader />
       <Container maxWidth="lg" sx={{ mt: 6, mb: 6 }}>
         {/* Header with Add Product */}
         <Box
@@ -120,7 +119,7 @@ const EcommerceIndex = () => {
               >
                 <Box
                   component="img"
-                  src={product.image}
+                  src={product.images[0]}
                   alt={product.name}
                   sx={{
                     width: "100%",

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import {
   Container,
   Typography,
@@ -30,9 +30,15 @@ const validationSchema = Yup.object({
     .typeError("Stock must be a number")
     .min(0, "Stock cannot be negative")
     .required("Stock is required"),
-  image: Yup.string()
-    .url("Enter a valid image URL")
-    .required("Image is required"),
+  images: Yup.array()
+    .of(Yup.string().url("Enter a valid image URL"))
+    .min(1, "At least one image is required"),
+  brand: Yup.string().required("Brand is required"),
+  sku: Yup.string().required("SKU is required"),
+  material: Yup.string().required("Material is required"),
+  weight: Yup.string().required("Weight is required"),
+  dimensions: Yup.string().required("Dimensions are required"),
+  warranty: Yup.string().required("Warranty is required"),
 });
 
 const AddAdminProducts = ({ drawerOpen, setDrawerOpen }: any) => {
@@ -43,7 +49,13 @@ const AddAdminProducts = ({ drawerOpen, setDrawerOpen }: any) => {
       description: "",
       category: "",
       stock: "",
-      image: "",
+      images: [""], // ✅ multiple images
+      brand: "",
+      sku: "",
+      material: "",
+      weight: "",
+      dimensions: "",
+      warranty: "",
     },
     validationSchema,
     onSubmit: async (values, { resetForm }) => {
@@ -64,6 +76,18 @@ const AddAdminProducts = ({ drawerOpen, setDrawerOpen }: any) => {
       }
     },
   });
+
+  // ✅ Function to add new image field
+  const addImageField = () => {
+    formik.setFieldValue("images", [...formik.values.images, ""]);
+  };
+
+  // ✅ Function to update a specific image
+  const updateImage = (index: number, value: string) => {
+    const newImages = [...formik.values.images];
+    newImages[index] = value;
+    formik.setFieldValue("images", newImages);
+  };
 
   return (
     <Container maxWidth="md" sx={{ mt: 6 }}>
@@ -157,16 +181,100 @@ const AddAdminProducts = ({ drawerOpen, setDrawerOpen }: any) => {
               error={formik.touched.stock && Boolean(formik.errors.stock)}
               helperText={formik.touched.stock && formik.errors.stock}
             />
+
+            {/* ✅ Multiple Images */}
+            <Typography variant="subtitle1" fontWeight={500}>
+              Product Images
+            </Typography>
+            {formik.values.images.map((img, index) => (
+              <TextField
+                key={index}
+                label={`Image URL ${index + 1}`}
+                fullWidth
+                value={img}
+                onChange={(e) => updateImage(index, e.target.value)}
+                error={
+                  formik.touched.images &&
+                  Boolean(formik.errors.images?.[index])
+                }
+                helperText={
+                  formik.touched.images &&
+                  (formik.errors.images as any)?.[index]
+                }
+              />
+            ))}
+            <Button
+              variant="outlined"
+              onClick={addImageField}
+              sx={{ textTransform: "none" }}
+            >
+              + Add More Images
+            </Button>
+
+            {/* ✅ Extra Fields */}
             <TextField
-              label="Image URL"
-              name="image"
+              label="Brand"
+              name="brand"
               fullWidth
-              value={formik.values.image}
+              value={formik.values.brand}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              error={formik.touched.image && Boolean(formik.errors.image)}
-              helperText={formik.touched.image && formik.errors.image}
+              error={formik.touched.brand && Boolean(formik.errors.brand)}
+              helperText={formik.touched.brand && formik.errors.brand}
             />
+            <TextField
+              label="SKU/Product Code"
+              name="sku"
+              fullWidth
+              value={formik.values.sku}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.sku && Boolean(formik.errors.sku)}
+              helperText={formik.touched.sku && formik.errors.sku}
+            />
+            <TextField
+              label="Material"
+              name="material"
+              fullWidth
+              value={formik.values.material}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.material && Boolean(formik.errors.material)}
+              helperText={formik.touched.material && formik.errors.material}
+            />
+            <TextField
+              label="Weight"
+              name="weight"
+              fullWidth
+              value={formik.values.weight}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.weight && Boolean(formik.errors.weight)}
+              helperText={formik.touched.weight && formik.errors.weight}
+            />
+            <TextField
+              label="Dimensions"
+              name="dimensions"
+              fullWidth
+              value={formik.values.dimensions}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={
+                formik.touched.dimensions && Boolean(formik.errors.dimensions)
+              }
+              helperText={formik.touched.dimensions && formik.errors.dimensions}
+            />
+            <TextField
+              label="Warranty"
+              name="warranty"
+              fullWidth
+              value={formik.values.warranty}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.warranty && Boolean(formik.errors.warranty)}
+              helperText={formik.touched.warranty && formik.errors.warranty}
+            />
+
             <Button type="submit" variant="contained" sx={{ mt: 1 }}>
               Save Product
             </Button>
