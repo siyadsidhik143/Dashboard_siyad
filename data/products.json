@@ -128,5 +128,22 @@
     "weight": "125kg",
     "dimensions": "12 x 22",
     "warranty": "Not applicable"
+  },
+  {
+    "id": 1757396310017,
+    "name": "Titan Skinn RAW",
+    "price": 2599,
+    "description": "Test description",
+    "category": "Cosmetics",
+    "stock": 12,
+    "images": [
+      "https://m.media-amazon.com/images/I/61yZJiJvgoL._SX679_.jpg"
+    ],
+    "brand": "Titan",
+    "sku": "123",
+    "material": "Perfume",
+    "weight": "100gm",
+    "dimensions": "34",
+    "warranty": "1"
   }
 ]

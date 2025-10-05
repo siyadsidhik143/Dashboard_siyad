@@ -83,9 +83,10 @@ const ProductDetailsPage = () => {
 
   return (
     <Card
+      elevation={0}
       sx={{
         display: "flex",
-        flexDirection: { xs: "column", md: "row" }, // ✅ stack on mobile
+        flexDirection: { xs: "column", md: "row" },
         p: { xs: 2, md: 3 },
         mt: 2,
       }}

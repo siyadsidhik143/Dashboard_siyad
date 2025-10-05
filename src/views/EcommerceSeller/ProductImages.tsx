@@ -39,7 +39,7 @@ export default function ProductImages({
           display: "flex",
           flexDirection: { xs: "column", sm: "row" },
           alignItems: "flex-start",
-          gap: { xs: 2, md: 1 },
+          gap: { xs: 1, md: 0 },
           width: "100%",
         }}
       >
@@ -53,7 +53,10 @@ export default function ProductImages({
             maxWidth: { xs: "100%", sm: 100 },
             overflowX: { xs: "auto", sm: "hidden" },
             overflowY: { xs: "hidden", sm: "auto" },
-            // pr: { sm: 1 },
+            p: 1,
+            border: "1px solid #eae0e0",
+            borderRadius: "10px",
+            minHeight: "73vh",
           }}
         >
           {images.map((img, idx) => (
